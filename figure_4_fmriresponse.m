@@ -116,8 +116,8 @@ load L2_letters.mat
 imgid = sort([17 20 25 29 35   18 13 23 33 27 ]);
 cnt = 1;
 for i = [imgid imgid+36]
-    x = mean(images{i});
-    npix(cnt,1) = numel(find(images{i}));
+    x = mean(L2_str.images{i});
+    npix(cnt,1) = numel(find(L2_str.images{i}));
     wid(cnt,1) = numel(find(x));  cnt = cnt + 1;  
 end
 [mean(wid(1:10)) mean(wid(11:20))]

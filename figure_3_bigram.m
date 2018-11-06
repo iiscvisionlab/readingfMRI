@@ -90,7 +90,7 @@ legend({'Telugu readers','Malayalam readers'});
 [~,y_pred_new_tm] = fitsigmoid(y_pred_tm,1./RTtm);
 [~,y_pred_new_mm] = fitsigmoid(y_pred_mm,1./RTmm);
 
-p = statcomparemean(w_tt(1:10),w_mt(1:10),0);
+p = statcomparemean(w_tt(1:10),w_mt(1:10));
 
 % correlation between model terms for Telugu readers on Telugu bigrams
 % [cT_CA, pT_CA] = nancorrcoef(w_tt(1:10),w_tt(11:20));
@@ -248,12 +248,12 @@ predmt = [ypredmt_C ypredmt_A ypredmt_W];
 [am,as] = aicc(ypredmt_CW,1./RTmt,21)
 
 %% Understanding within part-terms
-load('tel_25bigram.mat')
-xx = tel_bigram([2 3 4 5 8 9 10 14 15 20]);
-figure; subplot(121);  corrplot(xx, (w_tt(1:10)-abs(w_tt(21:30))));  xlabel('Bigram frequency'); ylabel('corr - abs(within) terms')
-subplot(122); corrplot(w_tt(1:10),abs(w_tt(21:30)),[],1); xlabel('Corresponding terms'); ylabel('Absolute Within terms')
-
-load('mal_25bigram.mat')
-xx = mal_bigram([2 3 4 5 8 9 10 14 15 20]);
-figure; subplot(121);  corrplot(xx, (w_mm(1:10)-abs(w_mm(21:30))));  xlabel('Bigram frequency'); ylabel('corr - abs(within) terms')
-subplot(122); corrplot(w_mm(1:10),abs(w_mm(21:30)),[],1); xlabel('Corresponding terms'); ylabel('Absolute Within terms')
+% load('tel_25bigram.mat')
+% xx = tel_bigram([2 3 4 5 8 9 10 14 15 20]);
+% figure; subplot(121);  corrplot(xx, (w_tt(1:10)-abs(w_tt(21:30))));  xlabel('Bigram frequency'); ylabel('corr - abs(within) terms')
+% subplot(122); corrplot(w_tt(1:10),abs(w_tt(21:30)),[],1); xlabel('Corresponding terms'); ylabel('Absolute Within terms')
+% 
+% load('mal_25bigram.mat')
+% xx = mal_bigram([2 3 4 5 8 9 10 14 15 20]);
+% figure; subplot(121);  corrplot(xx, (w_mm(1:10)-abs(w_mm(21:30))));  xlabel('Bigram frequency'); ylabel('corr - abs(within) terms')
+% subplot(122); corrplot(w_mm(1:10),abs(w_mm(21:30)),[],1); xlabel('Corresponding terms'); ylabel('Absolute Within terms')

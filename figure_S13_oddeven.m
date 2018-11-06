@@ -7,17 +7,17 @@ ismal = L2_str.ismal; % Is subject Malayalam: 1 (for Malayalam) and 0 (for Telug
 qm = 1:34; qt = 35:68; % Index of Malayalam and Telugu stimuli
 qs = 1:10; qd = 11:34; % Index of single and double letter stimuli
 
-ids{1} = find(spm_read_vols(spm_vol('roidef_figure5/E_loc.nii'))); 
-ids{2} = find(spm_read_vols(spm_vol('roidef_figure5/O_loc.nii'))); 
-ids{3} = find(spm_read_vols(spm_vol('roidef_figure5/E_vwfa.nii')));
-ids{4} = find(spm_read_vols(spm_vol('roidef_figure5/O_vwfa.nii')));
+ids{1} = find(spm_read_vols(spm_vol('roidef_figureS13/E_loc.nii'))); 
+ids{2} = find(spm_read_vols(spm_vol('roidef_figureS13/O_loc.nii'))); 
+ids{3} = find(spm_read_vols(spm_vol('roidef_figureS13/E_vwfa.nii')));
+ids{4} = find(spm_read_vols(spm_vol('roidef_figureS13/O_vwfa.nii')));
 
 qsubm = find(ismal == 1);
 qsubt = find(ismal == 0);
 odd_sub = [qsubt(1:2:end); qsubm(1:2:end)];
 even_sub = [qsubt(2:2:end); qsubm(2:2:end)];
 %% Modelling activation of Bigrams using activations of single letters
-for roi = 1%:2 % 3 = LOC
+for roi = 1:2 % 3 = LOC
     % Selecting top N voxels to model and initialising the variables
     topnvoxels = 40; N = NaN(numel(ismal),topnvoxels);
     cvn = N; pvn = N; cvnn = N; pvnn = N; bn = NaN(numel(ismal),topnvoxels,3); bnn = bn;

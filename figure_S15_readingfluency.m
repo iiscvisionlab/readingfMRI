@@ -54,7 +54,7 @@ end
 barweb(nanmean(R,2),nanstd(R,[],2))
 %%
 for i = 1:35
-    tmean(i,1) = nanmedian(L2_str.fROI.VWFA.tvalues{i}(1:20)); % In the main figure, this constraint of 20 voxels is not considered.
+    tmean(i,1) = nanmedian(L2_str.fROI.VWFA.tvalues{i}); % In the main figure, constraint of 20 voxels is not considered (although it would have improved correlation value).
 end
 
 fluency = fluency';
