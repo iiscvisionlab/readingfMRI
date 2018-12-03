@@ -1,6 +1,7 @@
 allclear
 load L2_telmal_3baton.mat
 
+% The RT of these subjects were not correlated with other subjects and hence excluded.
 L2_str.RT(:,[2 25],:) = []; L2_str.PC(:,[2 25],:) = [];
 L2_str.subjinfo.ismalayalam([2 25]) = []; L2_str.BRT([2 25]) = [];
 
