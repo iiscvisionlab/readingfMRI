@@ -107,7 +107,7 @@ for sub = 1:35
     disp(sub)
 end
 
-for i = 1:35
+for sub = 1:35
     mask = reshape(L2_str.mergedevtbetash{sub},[53 63 52]);   mask(~isnan(mask)) = 1;
     MASK(:,:,:,sub) = mask;
 end
@@ -174,10 +174,10 @@ for x = 1:53
     disp(x)
 end
 %%
-FDR = 1;
+FDR = 0;
 if ~FDR
     % Uncorrected
-    thresh = .05;   % 1 for raw
+    thresh = 1;   % 1 for raw
     pth_ACT_N     = thresh;
     pth_ACT_NN    = thresh;
     pth_ACT_diff  = thresh;

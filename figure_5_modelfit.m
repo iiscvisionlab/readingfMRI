@@ -12,6 +12,9 @@ qtel_hf = [47,56,57,59,60,61,65,66,68,54,45,46]; qtel_lf = setdiff(qt(qd), qtel_
 qmal_hf = qmal_hf - 10; qmal_lf = qmal_lf - 10;
 qtel_hf = qtel_hf - 44; qtel_lf = qtel_lf - 44;
 
+qsubm = find(ismal == 1);
+qsubt = find(ismal == 0);
+
 %% Modelling activation of Bigrams using activations of single letters
 for roi = 1:5 % 3 = LOC
     % Selecting top N voxels to model and initialising the variables
@@ -20,7 +23,7 @@ for roi = 1:5 % 3 = LOC
     cpvn = N; ppvn = N; cpvnn = N; ppvnn = N;
     
     clear bpn bpnn
-    for sub = 1:35
+    for sub = 2:35
         if ismal(sub); N = qm; NN = qt; else, N = qt; NN = qm; end
         nvox = min(numel(ids{sub,roi}),topnvoxels);                % Total number of voxels considered in the analysis
         betas = L2_str.mergedevtbeta{sub}(ids{sub,roi}(1:nvox),:);
@@ -68,6 +71,7 @@ for roi = 1:5 % 3 = LOC
 %     subplot(222); statcomparemean(bpnn(ismal==1,:,1),bpnn(ismal==1,:,2));
 %     subplot(223); statcomparemean(bpn(ismal==0,:,1),bpn(ismal==0,:,2));
 %     subplot(224); statcomparemean(bpnn(ismal==0,:,1),bpnn(ismal==0,:,2));
+
 end
 
 figure; barweb([nanmean(R_n,2) nanmean(R_nn,2)], [nansem(R_n,2) nansem(R_nn,2)]);
@@ -78,9 +82,11 @@ for i = 1:5
     P(i) = signrank(R_n(i,:),R_nn(i,:));
 end
 
+
+
 % STATS separately for Telugu and Malayalam subjects
-%  signrank(R_n(3,ismal==0),R_nn(3,ismal==0))
-%  signrank(R_n(3,ismal==1),R_nn(3,ismal==1))
+%  signrank(R_n(3,qsubt),R_nn(3,qsubt))
+%  signrank(R_n(3,qsubm),R_nn(3,qsubm))
 
 
 % figure; statcomparemean([bpn(:,1)- bpn(:,2)]./[bpn(:,1)+ bpn(:,2)], [bpnn(:,1)- bpnn(:,2)]./[bpnn(:,1)+ bpnn(:,2)]);
